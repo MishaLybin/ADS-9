@@ -12,27 +12,27 @@ template<typename T>
 class BST {
  private:
     struct Node {
- T value;
+     T value;
         int count;
- Node *left;
- Node *right;
+     Node *left;
+     Node *right;
     };
  Node* root;
  Node* addNode(Node *root, const T& value) {
-        if (root == nullptr) {
- root = new Node;
- root->value = value;
- root->count = 1;
- root->left = root->right = nullptr;
- } else if (root->value > value) {
- root->left = addNode(root->left, value);
- } else if (root->value < value) {
- root->right = addNode(root->right, value);
- } else {
- root->count++;
-        }
-        return root;
-    }
+  if (root == nullptr) {
+   root = new Node;
+   root->value = value;
+   root->count = 1;
+   root->left = root->right = nullptr;
+  } else if (root->value > value) {
+   root->left = addNode(root->left, value);
+  } else if (root->value < value) {
+   root->right = addNode(root->right, value);
+  } else {
+   root->count++;
+  }
+  return root;
+ }
  Node* searchNode(Node* root, const T& value) {
         if (root == nullptr || root->value == value) {
             return root;
@@ -53,15 +53,15 @@ class BST {
         return depthTree(root) - 1;
     }
     int search(const T& value) {
- Node* i = searchNode(root, value);
+     Node* i = searchNode(root, value);
         if (i != nullptr) {
             return i->count;
- } else {
+        } else {
             return  0;
         }
     }
     void add(const T& value) {
- root = addNode(root, value);
+     root = addNode(root, value);
     }
 };
 #endif  //
